@@ -2,7 +2,18 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-import { AppBar, Container, Paper, Toolbar, Typography } from "@mui/material";
+import {
+  AppBar,
+  Button,
+  Container,
+  Grid,
+  Paper,
+  TextField,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+import { TaskInputForm } from "@/components/TaskInputForm/TaskInputForm";
+import { TaskList } from "@/components/TaskList/TaskList";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,15 +41,37 @@ export default function Home() {
             </Typography>
           </Toolbar>
         </AppBar>
-        <Container component="main" maxWidth="sm">
-          <Paper
-            variant="outlined"
-            sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
-          >
-            <Typography variant="h4" align="center">
-              Tasks
-            </Typography>
-          </Paper>
+        <Container component="main" maxWidth="md">
+          <TaskInputForm />
+          <TaskList
+            tasks={[
+              {
+                title: "Task1",
+                description: "Hey there you should do this",
+                id: 1,
+              },
+              {
+                title: "Task2",
+                description: "Hey there you should do this",
+                id: 2,
+              },
+              {
+                title: "Task3",
+                description: "Hey there you should do this",
+                id: 3,
+              },
+              {
+                title: "Task4",
+                description: "Hey there you should do this",
+                id: 4,
+              },
+              {
+                title: "Task5",
+                description: "Hey there you should do this",
+                id: 5,
+              },
+            ]}
+          />
         </Container>
       </>
     </>
