@@ -1,3 +1,9 @@
+import {
+  ACTION_TYPES,
+  Task,
+  TaskValues,
+  useTaskContext,
+} from "@/context/tasks/TaskContext";
 import { Delete, Edit } from "@mui/icons-material";
 import {
   Checkbox,
@@ -8,19 +14,49 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useCallback, useState } from "react";
+import { TaskInputForm } from "../TaskInputForm/TaskInputForm";
 
-export function TaskListItem({ task }) {
-  const [checked, setChecked] = React.useState(false);
+interface ITaskListItemProps {
+  task: Task;
+}
 
-  return (
+export function TaskListItem({ task }: ITaskListItemProps) {
+  const [checked, setChecked] = useState(false);
+  const [editMode, setEditMode] = useState(false);
+  const { dispatch } = useTaskContext();
+  const handleDeleteTask = useCallback(() => {
+    dispatch({
+      type: ACTION_TYPES.DELETE_TASK,
+      payload: task.id,
+    });
+  }, [task, dispatch]);
+
+  function handleEditTask(payload: TaskValues) {
+    dispatch({
+      type: ACTION_TYPES.EDIT_TASK,
+      payload: {
+        ...payload,
+        id: task.id,
+      },
+    });
+    setEditMode(false);
+  }
+
+  return editMode ? (
+    <TaskInputForm
+      handleSubmit={handleEditTask}
+      initialTitle={task.title}
+      initialDescription={task.description}
+    />
+  ) : (
     <ListItem
       secondaryAction={
         <>
           <IconButton>
-            <Edit />
+            <Edit onClick={() => setEditMode(true)} />
           </IconButton>
-          <IconButton>
+          <IconButton onClick={handleDeleteTask}>
             <Delete />
           </IconButton>
         </>

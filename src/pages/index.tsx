@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import { TaskInputForm } from "@/components/TaskInputForm/TaskInputForm";
 import { TaskList } from "@/components/TaskList/TaskList";
+import { NewTaskForm } from "@/components/NewTaskForm/NewTaskForm";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -42,7 +43,7 @@ export default function Home() {
           </Toolbar>
         </AppBar>
         <Container component="main" maxWidth="md">
-          <TaskInputForm />
+          <NewTaskForm />
           <TaskList
             tasks={[
               {

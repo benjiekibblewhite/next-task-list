@@ -1,8 +1,12 @@
 import { Paper, Typography } from "@mui/material";
 import React from "react";
 import { TaskListItem } from "../TaskListitem/TaskListItem";
+import { useTaskContext } from "@/context/tasks/TaskContext";
 
-export function TaskList({ tasks }) {
+export function TaskList() {
+  const {
+    state: { tasks },
+  } = useTaskContext();
   return (
     <Paper
       variant="outlined"
