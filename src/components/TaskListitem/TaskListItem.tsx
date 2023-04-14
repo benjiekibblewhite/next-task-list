@@ -51,10 +51,11 @@ export function TaskListItem({ task }: ITaskListItemProps) {
     />
   ) : (
     <ListItem
+      disableGutters
       secondaryAction={
         <>
-          <IconButton>
-            <Edit onClick={() => setEditMode(true)} />
+          <IconButton onClick={() => setEditMode(true)}>
+            <Edit />
           </IconButton>
           <IconButton onClick={handleDeleteTask}>
             <Delete />

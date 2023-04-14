@@ -75,20 +75,6 @@ const reducer = (state: TaskState, action) => {
 export const TaskContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // function setNewTask(payload: Task) {
-  //   dispatch({
-  //     type: ACTION_TYPES.ADD_TASK,
-  //     payload,
-  //   });
-  // }
-
-  // function deleteTask(payload: number) {
-  //   dispatch({
-  //     type: ACTION_TYPES.DELETE_TASK,
-  //     payload
-  //   })
-  // }
-
   return (
     <TaskContext.Provider value={{ state, dispatch }}>
       {children}

@@ -25,54 +25,46 @@ export function TaskInputForm({
   }
 
   return (
-    <Paper
-      variant="outlined"
-      sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        submitForm();
+      }}
     >
-      <Typography variant="h4" align="center">
-        Add New Task
-      </Typography>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          submitForm();
-        }}
-      >
-        <Grid container spacing={3} mt={1}>
-          <Grid item xs>
-            <TextField
-              variant="outlined"
-              label="Title"
-              fullWidth
-              id="task-title"
-              value={title ?? ""}
-              onChange={(e) => setTitle(e.target.value)}
-              required
-            />
-          </Grid>
-          <Grid item xs={7}>
-            <TextField
-              variant="outlined"
-              label="Description"
-              multiline
-              fullWidth
-              id="task-desription"
-              value={description ?? ""}
-              onChange={(e) => setDescription(e.target.value)}
-              required
-            />
-          </Grid>
-          <Grid item xs="auto">
-            <Button
-              variant="contained"
-              type="submit"
-              disabled={!title || !description}
-            >
-              Save
-            </Button>
-          </Grid>
+      <Grid container spacing={3} mt={1}>
+        <Grid item xs>
+          <TextField
+            variant="outlined"
+            label="Title"
+            fullWidth
+            id="task-title"
+            value={title ?? ""}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
         </Grid>
-      </form>
-    </Paper>
+        <Grid item xs={7}>
+          <TextField
+            variant="outlined"
+            label="Description"
+            multiline
+            fullWidth
+            id="task-desription"
+            value={description ?? ""}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          />
+        </Grid>
+        <Grid item xs="auto">
+          <Button
+            variant="contained"
+            type="submit"
+            disabled={!title || !description}
+          >
+            Save
+          </Button>
+        </Grid>
+      </Grid>
+    </form>
   );
 }
