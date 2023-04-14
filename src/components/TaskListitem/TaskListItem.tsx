@@ -66,6 +66,7 @@ export function TaskListItem({ task }: TaskListItemProps) {
         </ListItemIcon>
         <ListItemText
           // TODO: strikethrough when checked
+          style={{ textDecoration: checked ? "line-through" : "none" }}
           primary={task.title}
           secondary={<>{task.description}</>}
         />
