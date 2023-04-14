@@ -9,7 +9,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { TaskInputForm } from "../TaskInputForm/TaskInputForm";
 import { TaskListItemProps } from "./TaskListItem.types";
 
@@ -18,12 +18,12 @@ export function TaskListItem({ task }: TaskListItemProps) {
   const [editMode, setEditMode] = useState(false);
   const { dispatch } = useTaskContext();
 
-  const handleDeleteTask = useCallback(() => {
+  function handleDeleteTask() {
     dispatch({
       type: ACTION_TYPES.DELETE_TASK,
       payload: task.id,
     });
-  }, [task, dispatch]);
+  }
 
   function handleEditTask(payload: TaskValues) {
     dispatch({
