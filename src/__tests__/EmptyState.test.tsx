@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { EmptyState } from "../EmptyState";
+import { EmptyState } from "../components/EmptyState/EmptyState";
 import { Mood } from "@mui/icons-material";
 
 describe("Empty State Component", () => {

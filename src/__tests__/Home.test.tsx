@@ -8,7 +8,7 @@ import {
   queryAllByTestId,
   render,
 } from "@testing-library/react";
-import Home from "..";
+import Home from "../pages";
 
 function setupTest() {
   const { container } = render(
