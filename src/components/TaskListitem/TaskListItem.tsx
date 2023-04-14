@@ -1,5 +1,5 @@
-import { ACTION_TYPES, useTaskContext } from "@/context/tasks/TaskContext";
-import { TaskValues } from "@/context/tasks/TaskContext.types";
+import { useTaskContext } from "@/context/tasks/TaskContext";
+import { ACTION_TYPES, TaskValues } from "@/context/tasks/TaskContext.types";
 import { Delete, Edit } from "@mui/icons-material";
 import {
   Checkbox,
