@@ -36,6 +36,7 @@ const reducer = (state: TaskState, action: TaskActions) => {
           {
             ...action.payload,
             id: state.tasks.length,
+            checked: false,
           },
         ],
       };

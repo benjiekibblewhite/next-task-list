@@ -6,6 +6,7 @@ export type TaskValues = {
 };
 export type Task = TaskValues & {
   id: number;
+  checked: boolean;
 };
 
 export type TaskState = {

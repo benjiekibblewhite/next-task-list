@@ -14,7 +14,6 @@ import { TaskInputForm } from "../TaskInputForm/TaskInputForm";
 import { TaskListItemProps } from "./TaskListItem.types";
 
 export function TaskListItem({ task }: TaskListItemProps) {
-  const [checked, setChecked] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const { dispatch } = useTaskContext();
 
@@ -31,9 +30,20 @@ export function TaskListItem({ task }: TaskListItemProps) {
       payload: {
         ...payload,
         id: task.id,
+        checked: task.checked,
       },
     });
     setEditMode(false);
+  }
+
+  function toggleTaskChecked() {
+    dispatch({
+      type: ACTION_TYPES.EDIT_TASK,
+      payload: {
+        ...task,
+        checked: !task.checked,
+      },
+    });
   }
 
   return editMode ? (
@@ -57,16 +67,13 @@ export function TaskListItem({ task }: TaskListItemProps) {
         </>
       }
     >
-      <ListItemButton
-        role={undefined}
-        onClick={() => setChecked((checked) => !checked)}
-      >
+      <ListItemButton role={undefined} onClick={toggleTaskChecked}>
         <ListItemIcon>
-          <Checkbox checked={checked} />
+          <Checkbox checked={task.checked} />
         </ListItemIcon>
         <ListItemText
           // TODO: strikethrough when checked
-          style={{ textDecoration: checked ? "line-through" : "none" }}
+          style={{ textDecoration: task.checked ? "line-through" : "none" }}
           primary={task.title}
           secondary={<>{task.description}</>}
         />
