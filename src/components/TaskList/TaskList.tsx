@@ -6,11 +6,14 @@ import {
   Paper,
   TextField,
   Typography,
+  Fade,
 } from "@mui/material";
 import React, { FormEvent, useMemo, useState } from "react";
 import { TaskListItem } from "../TaskListitem/TaskListItem";
 import { useTaskContext } from "@/context/tasks/TaskContext";
 import { TransitionGroup } from "react-transition-group";
+import { EmptyState } from "../EmptyState/EmptyState";
+import { Mood, Search } from "@mui/icons-material";
 export function TaskList() {
   const [filterBy, setFilterBy] = useState<string>();
   const {
@@ -26,6 +29,20 @@ export function TaskList() {
     });
   }, [tasks, filterBy]);
 
+  const showEmptyState = () => {
+    if (filterBy) {
+      return (
+        <EmptyState text="No Results!" Icon={<Search color="primary" />} />
+      );
+    }
+    return (
+      <EmptyState
+        text="No tasks! Enjoy your day!"
+        Icon={<Mood color="primary" />}
+      />
+    );
+  };
+
   return (
     <Paper
       variant="outlined"
@@ -38,7 +55,7 @@ export function TaskList() {
         <Grid item xs>
           <TextField
             fullWidth
-            label="Filter Tasks"
+            label="Search"
             id="filter-tasks"
             value={filterBy || ""}
             onChange={(e) => {
@@ -54,11 +71,15 @@ export function TaskList() {
       </Grid>
       <List>
         <TransitionGroup>
-          {tasksToShow.map((item) => (
-            <Collapse key={item.id}>
-              <TaskListItem task={item} />
-            </Collapse>
-          ))}
+          {tasksToShow.length === 0 ? (
+            <Collapse>{showEmptyState()}</Collapse>
+          ) : (
+            tasksToShow.map((item) => (
+              <Collapse key={item.id}>
+                <TaskListItem task={item} />
+              </Collapse>
+            ))
+          )}
         </TransitionGroup>
       </List>
     </Paper>
