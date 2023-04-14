@@ -43,7 +43,7 @@ export enum ACTION_TYPES {
   RESTORE_STATE = "RESTORE_STATE",
 }
 
-const reducer = (state: TaskState, action) => {
+const reducer = (state: TaskState, action: any) => {
   switch (action.type) {
     case ACTION_TYPES.RESTORE_STATE: {
       return action.payload;
@@ -85,7 +85,11 @@ const reducer = (state: TaskState, action) => {
 
 const TASK_STATE_KEY = "TASKS_STATE";
 
-export const TaskContextProvider = ({ children }) => {
+export const TaskContextProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [stateIsRecovered, setStateIsRecovered] = useState(false);
   useEffect(() => {
