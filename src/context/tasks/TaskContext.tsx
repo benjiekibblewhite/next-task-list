@@ -5,7 +5,12 @@ import React, {
   useReducer,
   useState,
 } from "react";
-import { TaskContextValues, TaskState } from "./TaskContext.types";
+import {
+  ACTION_TYPES,
+  TaskActions,
+  TaskContextValues,
+  TaskState,
+} from "./TaskContext.types";
 const initialState: TaskState = {
   tasks: [],
 };
@@ -18,14 +23,7 @@ const initialContextValues: TaskContextValues = {
 export const TaskContext =
   createContext<TaskContextValues>(initialContextValues);
 
-export enum ACTION_TYPES {
-  ADD_TASK = "ADD_TASK",
-  DELETE_TASK = "DELETE_TASK",
-  EDIT_TASK = "EDIT_TASK",
-  RESTORE_STATE = "RESTORE_STATE",
-}
-
-const reducer = (state: TaskState, action: any) => {
+const reducer = (state: TaskState, action: TaskActions) => {
   switch (action.type) {
     case ACTION_TYPES.RESTORE_STATE: {
       return action.payload;

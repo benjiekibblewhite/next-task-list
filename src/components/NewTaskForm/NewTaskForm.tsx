@@ -2,14 +2,14 @@ import React from "react";
 import { TaskInputForm } from "../TaskInputForm/TaskInputForm";
 import { useTaskContext } from "@/context/tasks/TaskContext";
 import { Paper, Typography } from "@mui/material";
-import { TaskValues } from "@/context/tasks/TaskContext.types";
+import { ACTION_TYPES, TaskValues } from "@/context/tasks/TaskContext.types";
 
 export function NewTaskForm() {
   const { dispatch } = useTaskContext();
 
   function handleAddNewTask(payload: TaskValues) {
     dispatch({
-      type: "ADD_TASK",
+      type: ACTION_TYPES.ADD_TASK,
       payload,
     });
   }
