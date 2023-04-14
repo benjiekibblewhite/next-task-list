@@ -14,6 +14,7 @@ import { useTaskContext } from "@/context/tasks/TaskContext";
 import { TransitionGroup } from "react-transition-group";
 import { EmptyState } from "../EmptyState/EmptyState";
 import { Mood, Search } from "@mui/icons-material";
+import { checkFilterBy } from "./TaskList.utils";
 
 export function TaskList() {
   const [filterBy, setFilterBy] = useState<string>();
@@ -25,7 +26,8 @@ export function TaskList() {
     return tasks.filter((item) => {
       if (!filterBy) return true;
       return (
-        item.description.includes(filterBy) || item.title.includes(filterBy)
+        checkFilterBy(item.description, filterBy) ||
+        checkFilterBy(item.title, filterBy)
       );
     });
   }, [tasks, filterBy]);
