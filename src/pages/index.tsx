@@ -1,9 +1,6 @@
 import { NewTaskForm } from "@/components/NewTaskForm/NewTaskForm";
 import { TaskList } from "@/components/TaskList/TaskList";
-import { Task, TaskOutlined } from "@mui/icons-material";
-import { AppBar, Container, Icon, Toolbar, Typography } from "@mui/material";
-import { Inter } from "next/font/google";
-import Head from "next/head";
+import { Container } from "@mui/material";
 
 export default function Home() {
   return (

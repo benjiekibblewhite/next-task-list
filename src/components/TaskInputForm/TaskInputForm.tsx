@@ -32,6 +32,7 @@ export function TaskInputForm({
             label="Title"
             fullWidth
             id="task-title"
+            inputProps={{ "data-testid": "task-title" }}
             value={title ?? ""}
             onChange={(e) => setTitle(e.target.value)}
             required
@@ -43,7 +44,8 @@ export function TaskInputForm({
             label="Description"
             multiline
             fullWidth
-            id="task-desription"
+            id="task-description"
+            inputProps={{ "data-testid": "task-description" }}
             value={description ?? ""}
             onChange={(e) => setDescription(e.target.value)}
             required

@@ -3,7 +3,7 @@ import "@testing-library/jest-dom";
 import { EmptyState } from "../EmptyState";
 import { Mood } from "@mui/icons-material";
 
-describe("Home", () => {
+describe("Empty State Component", () => {
   it("renders the provided content", () => {
     const text = "title";
     render(<EmptyState text={text} Icon={<Mood data-testid="mood-icon" />} />);

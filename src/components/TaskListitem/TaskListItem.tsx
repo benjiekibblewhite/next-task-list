@@ -17,6 +17,7 @@ export function TaskListItem({ task }: TaskListItemProps) {
   const [checked, setChecked] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const { dispatch } = useTaskContext();
+
   const handleDeleteTask = useCallback(() => {
     dispatch({
       type: ACTION_TYPES.DELETE_TASK,
@@ -43,6 +44,7 @@ export function TaskListItem({ task }: TaskListItemProps) {
     />
   ) : (
     <ListItem
+      data-testid="list-item"
       disableGutters
       secondaryAction={
         <>
