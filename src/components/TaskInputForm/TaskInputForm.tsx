@@ -1,12 +1,6 @@
-import { TaskValues, useTaskContext } from "@/context/tasks/TaskContext";
-import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
-import React, { useState } from "react";
-
-interface TaskInputFormProps {
-  handleSubmit: (payload: TaskValues) => void;
-  initialTitle?: string;
-  initialDescription?: string;
-}
+import { Button, Grid, TextField } from "@mui/material";
+import { useState } from "react";
+import { TaskInputFormProps } from "./TaskInputForm.types";
 
 export function TaskInputForm({
   handleSubmit,

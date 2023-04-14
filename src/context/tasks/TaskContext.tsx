@@ -1,29 +1,11 @@
 import React, {
-  Dispatch,
   createContext,
   useContext,
   useEffect,
   useReducer,
   useState,
 } from "react";
-
-export type TaskValues = {
-  title: string;
-  description: string;
-};
-export type Task = TaskValues & {
-  id: number;
-};
-
-type TaskState = {
-  tasks: Task[];
-};
-
-type TaskContextValues = {
-  state: TaskState;
-  dispatch: Dispatch<any>;
-};
-
+import { TaskContextValues, TaskState } from "./TaskContext.types";
 const initialState: TaskState = {
   tasks: [],
 };

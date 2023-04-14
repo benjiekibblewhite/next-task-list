@@ -1,7 +1,8 @@
 import React from "react";
 import { TaskInputForm } from "../TaskInputForm/TaskInputForm";
-import { TaskValues, useTaskContext } from "@/context/tasks/TaskContext";
+import { useTaskContext } from "@/context/tasks/TaskContext";
 import { Paper, Typography } from "@mui/material";
+import { TaskValues } from "@/context/tasks/TaskContext.types";
 
 export function NewTaskForm() {
   const { dispatch } = useTaskContext();

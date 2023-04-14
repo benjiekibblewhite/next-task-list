@@ -1,9 +1,5 @@
-import {
-  ACTION_TYPES,
-  Task,
-  TaskValues,
-  useTaskContext,
-} from "@/context/tasks/TaskContext";
+import { ACTION_TYPES, useTaskContext } from "@/context/tasks/TaskContext";
+import { TaskValues } from "@/context/tasks/TaskContext.types";
 import { Delete, Edit } from "@mui/icons-material";
 import {
   Checkbox,
@@ -12,16 +8,12 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  Typography,
 } from "@mui/material";
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { TaskInputForm } from "../TaskInputForm/TaskInputForm";
+import { TaskListItemProps } from "./TaskListItem.types";
 
-interface ITaskListItemProps {
-  task: Task;
-}
-
-export function TaskListItem({ task }: ITaskListItemProps) {
+export function TaskListItem({ task }: TaskListItemProps) {
   const [checked, setChecked] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const { dispatch } = useTaskContext();

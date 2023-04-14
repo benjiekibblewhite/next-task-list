@@ -1,11 +1,5 @@
 import { Box, Typography, useTheme } from "@mui/material";
-import Icon from "@mui/icons-material";
-import React from "react";
-
-interface EmptyStateProps {
-  text: string;
-  Icon: React.ReactNode;
-}
+import { EmptyStateProps } from "./EmptyState.types";
 
 export function EmptyState({ text, Icon }: EmptyStateProps) {
   const theme = useTheme();
