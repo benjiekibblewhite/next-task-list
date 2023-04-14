@@ -7,6 +7,7 @@ import {
   TextField,
   Typography,
   Fade,
+  Divider,
 } from "@mui/material";
 import React, { FormEvent, useMemo, useState } from "react";
 import { TaskListItem } from "../TaskListitem/TaskListItem";
@@ -54,7 +55,7 @@ export function TaskList() {
       <Typography variant="h4" align="center">
         Tasks
       </Typography>
-      <Grid container spacing={3} my={1}>
+      <Grid container spacing={3} my={2}>
         <Grid item xs>
           <TextField
             fullWidth
@@ -73,6 +74,7 @@ export function TaskList() {
         </Grid>
       </Grid>
       <List>
+        <Divider />
         <TransitionGroup>
           {tasksToShow.length === 0 ? (
             <Collapse>{showEmptyState()}</Collapse>

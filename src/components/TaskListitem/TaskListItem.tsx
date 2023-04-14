@@ -71,6 +71,7 @@ export function TaskListItem({ task }: ITaskListItemProps) {
           <Checkbox checked={checked} />
         </ListItemIcon>
         <ListItemText
+          // TODO: strikethrough when checked
           primary={task.title}
           secondary={<>{task.description}</>}
         />

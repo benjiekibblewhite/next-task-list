@@ -43,7 +43,7 @@ export function TaskInputForm({
             required
           />
         </Grid>
-        <Grid item xs={7}>
+        <Grid item xs={12} sm={6} md={7}>
           <TextField
             variant="outlined"
             label="Description"
