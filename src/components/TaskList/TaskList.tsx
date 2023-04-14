@@ -14,6 +14,7 @@ import { useTaskContext } from "@/context/tasks/TaskContext";
 import { TransitionGroup } from "react-transition-group";
 import { EmptyState } from "../EmptyState/EmptyState";
 import { Mood, Search } from "@mui/icons-material";
+
 export function TaskList() {
   const [filterBy, setFilterBy] = useState<string>();
   const {

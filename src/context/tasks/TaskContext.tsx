@@ -1,4 +1,11 @@
-import React, { Dispatch, createContext, useContext, useReducer } from "react";
+import React, {
+  Dispatch,
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 
 export type TaskValues = {
   title: string;
@@ -33,10 +40,14 @@ export enum ACTION_TYPES {
   ADD_TASK = "ADD_TASK",
   DELETE_TASK = "DELETE_TASK",
   EDIT_TASK = "EDIT_TASK",
+  RESTORE_STATE = "RESTORE_STATE",
 }
 
 const reducer = (state: TaskState, action) => {
   switch (action.type) {
+    case ACTION_TYPES.RESTORE_STATE: {
+      return action.payload;
+    }
     case ACTION_TYPES.ADD_TASK: {
       return {
         ...state,
@@ -72,12 +83,30 @@ const reducer = (state: TaskState, action) => {
   }
 };
 
+const TASK_STATE_KEY = "TASKS_STATE";
+
 export const TaskContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-
+  const [stateIsRecovered, setStateIsRecovered] = useState(false);
+  useEffect(() => {
+    if (window) {
+      const recoveredState = window.localStorage.getItem(TASK_STATE_KEY);
+      if (recoveredState) {
+        dispatch({
+          type: ACTION_TYPES.RESTORE_STATE,
+          payload: JSON.parse(recoveredState),
+        });
+      }
+      setStateIsRecovered(true);
+    }
+  }, []);
+  useEffect(() => {
+    if (stateIsRecovered)
+      window.localStorage.setItem(TASK_STATE_KEY, JSON.stringify(state));
+  }, [state, stateIsRecovered]);
   return (
     <TaskContext.Provider value={{ state, dispatch }}>
-      {children}
+      {stateIsRecovered && children}
     </TaskContext.Provider>
   );
 };

@@ -1,22 +1,8 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
-import {
-  AppBar,
-  Button,
-  Container,
-  Grid,
-  Paper,
-  TextField,
-  Toolbar,
-  Typography,
-} from "@mui/material";
-import { TaskInputForm } from "@/components/TaskInputForm/TaskInputForm";
-import { TaskList } from "@/components/TaskList/TaskList";
 import { NewTaskForm } from "@/components/NewTaskForm/NewTaskForm";
-
-const inter = Inter({ subsets: ["latin"] });
+import { TaskList } from "@/components/TaskList/TaskList";
+import { AppBar, Container, Toolbar, Typography } from "@mui/material";
+import { Inter } from "next/font/google";
+import Head from "next/head";
 
 export default function Home() {
   return (
@@ -28,7 +14,6 @@ export default function Home() {
       </Head>
       <>
         <AppBar
-          // position="absolute"
           color="default"
           elevation={0}
           sx={{
@@ -44,35 +29,7 @@ export default function Home() {
         </AppBar>
         <Container component="main" maxWidth="md">
           <NewTaskForm />
-          <TaskList
-            tasks={[
-              {
-                title: "Task1",
-                description: "Hey there you should do this",
-                id: 1,
-              },
-              {
-                title: "Task2",
-                description: "Hey there you should do this",
-                id: 2,
-              },
-              {
-                title: "Task3",
-                description: "Hey there you should do this",
-                id: 3,
-              },
-              {
-                title: "Task4",
-                description: "Hey there you should do this",
-                id: 4,
-              },
-              {
-                title: "Task5",
-                description: "Hey there you should do this",
-                id: 5,
-              },
-            ]}
-          />
+          <TaskList />
         </Container>
       </>
     </>
