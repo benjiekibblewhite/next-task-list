@@ -55,10 +55,10 @@ export function TaskListItem({ task }: ITaskListItemProps) {
       secondaryAction={
         <>
           <IconButton onClick={() => setEditMode(true)}>
-            <Edit />
+            <Edit color="action" />
           </IconButton>
           <IconButton onClick={handleDeleteTask}>
-            <Delete />
+            <Delete color={"primary"} />
           </IconButton>
         </>
       }
